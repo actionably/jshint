@@ -28,13 +28,20 @@
 
 /*jshint node: true, eqnull: true*/
 
-var JSHINT = require('../../src/jshint.js').JSHINT;
-
 if (exports.setup === undefined || exports.setup === null) {
   exports.setup = {};
 }
 
-exports.setup.testRun = function (test, name) {
+exports.setup.testRun = function (test, name, clean) {
+  if (clean) {
+    var jshint_path = require('path').resolve(__dirname,'../../');
+    Object.keys(require.cache).filter(function(key){
+      return key.indexOf(jshint_path) === 0 && (key.match(/src\/\w+\.js/) || key.match(/data\/[\w-]+\.js/));
+    }).forEach(function(key) {
+      delete require.cache[key];
+    });
+  }
+  var JSHINT = require('../../src/jshint.js').JSHINT;
   var initCounter = 0, runCounter = 0, seq = 0, checked = [], definedErrors = [];
 
   var helperObj = {
