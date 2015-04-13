@@ -69,7 +69,8 @@ var errors = {
   E051: "Regular parameters cannot come after default parameters.",
   E052: "Unclosed template literal.",
   E053: "Export declaration must be in global scope.",
-  E054: "Class properties must be methods. Expected '(' but instead saw '{a}'."
+  E054: "Class properties must be methods. Expected '(' but instead saw '{a}'.",
+  E055: "A await statement shall be within an async function (with syntax: `async function`)."
 };
 
 var warnings = {
@@ -205,7 +206,9 @@ var warnings = {
   W128: "Empty array elements require elision=true.",
   W129: "'{a}' is defined in a future version of JavaScript. Use a " +
     "different variable name to avoid migration issues.",
-  W130: "Trailing ',' is not valid in array destructuring assignment."
+  W130: "Trailing ',' is not valid in array destructuring assignment.",
+  W131: "An async function shall contain an await statement.",
+  W132: "'{a}' is available in async/await extension(use asyncawait option)."
 };
 
 var info = {

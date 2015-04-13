@@ -903,8 +903,12 @@ exports.val = {
                         //   end      - stop ignoring lines, starting on the next line
                         //   line     - ignore warnings / errors for just a single line
                         //              (this option does not bypass the lexer)
-  ignoreDelimiters: false // array of start/end delimiters used to ignore
-                          // certain chunks from code
+  ignoreDelimiters: false, // array of start/end delimiters used to ignore
+                           // certain chunks from code
+  experimental: []      // experimental feature, see list below
+                        // asyncawait    : enables async/await functions support.
+                        // asyncreqawait : requires async functions to contain at least
+                        //                  one await statement.
 };
 
 // These are JSHint boolean options which are shared with JSLint
