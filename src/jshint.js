@@ -3111,7 +3111,7 @@ var JSHINT = (function() {
       }
       
       if (isAsync && !state.option.isAsyncAwaitEnabled()) {
-        warning("W132", state.tokens.curr, "async");
+        warning("W999", state.tokens.curr, "async");
       }
 
       if (!options.loneArg) {
@@ -3128,7 +3128,7 @@ var JSHINT = (function() {
     
     if (state.option.isAsyncAwaitEnforced() && isAsync &&
         funct["(async)"] !== "awaited") {
-      warning("W131", state.tokens.curr);
+      warning("W998", state.tokens.curr);
     }
 
     funct["(metrics)"].verifyMaxStatementsPerFunction();
@@ -3392,7 +3392,7 @@ var JSHINT = (function() {
         advance(",");
         if (checkPunctuators(state.tokens.next, ["]"])) {
           // Trailing commas are not allowed in ArrayBindingPattern
-          warning("W130", state.tokens.next);
+          warning("W997", state.tokens.next);
           break;
         }
         nextInnerDE();
@@ -3774,7 +3774,7 @@ var JSHINT = (function() {
         
         if(isAsync) {
           if (!state.option.isAsyncAwaitEnabled()) {
-            warning("W132", state.tokens.curr, "async");
+            warning("W999", state.tokens.curr, "async");
           }
         }
       } else {
@@ -3834,7 +3834,7 @@ var JSHINT = (function() {
     if(state.option.isAsyncAwaitEnabled()) {
       blockstmt("async", function () {
         if (!state.option.isAsyncAwaitEnabled()) {
-          warning("W132", state.tokens.curr, "async");
+          warning("W999", state.tokens.curr, "async");
         }
         if (state.tokens.next.value === "function") {
           advance("function");
@@ -3905,7 +3905,7 @@ var JSHINT = (function() {
     if(state.option.isAsyncAwaitEnabled()) {
       prefix("async", function () {
         if (!state.option.isAsyncAwaitEnabled()) {
-          warning("W132", state.tokens.curr, "async");
+          warning("W999", state.tokens.curr, "async");
         }
         function isVariable(name) { return name[0] !== "("; }
         function isLocal(name) { return fn[name] === "var"; }
@@ -4539,10 +4539,10 @@ var JSHINT = (function() {
         if (state.option.isAsyncAwaitEnabled() && !funct["(async)"]) {
           // If it's a await within a catch clause inside an async function then that's ok
           if (!("(catch)" === funct["(name)"] && funct["(context)"]["(async)"])) {
-            error("E055", state.tokens.curr, "await");
+            error("E999", state.tokens.curr, "await");
           }
         } else if (!state.option.isAsyncAwaitEnabled()) {  
-          warning("W132", state.tokens.curr, "await");
+          warning("W999", state.tokens.curr, "await");
         }
         funct["(async)"] = "awaited";
 
